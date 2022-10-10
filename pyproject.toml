@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mendel"
+version = "0.1.0"
+description = "A Biological Perspective on Neural Networks"
+authors = ["jlikhuva <jlikhuva@alumni.stanford.edu>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
