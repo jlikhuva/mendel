@@ -30,7 +30,7 @@ class TrainingMetrics(pydantic.BaseModel):
 
 class Trainer:
     def __init__(self,
-        model: nn.Module,
+    model: nn.Module,
         loss_fn = nn.CrossEntropyLoss,
     ) -> None:
         pass
