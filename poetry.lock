@@ -152,6 +152,25 @@ python-versions = ">=3.6"
 pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 
 [[package]]
+name = "pandas"
+version = "1.5.0"
+description = "Powerful data structures for data analysis, time series, and statistics"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numpy = [
+    {version = ">=1.21.0", markers = "python_version >= \"3.10\""},
+    {version = ">=1.20.3", markers = "python_version < \"3.10\""},
+]
+python-dateutil = ">=2.8.1"
+pytz = ">=2020.1"
+
+[package.extras]
+test = ["pytest-xdist (>=1.31)", "pytest (>=6.0)", "hypothesis (>=5.5.3)"]
+
+[[package]]
 name = "pillow"
 version = "9.2.0"
 description = "Python Imaging Library (Fork)"
@@ -270,6 +289,25 @@ checkqa-mypy = ["mypy (==v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "pytz"
+version = "2022.4"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pyyaml"
 version = "6.0"
 description = "YAML parser and emitter for Python"
@@ -310,6 +348,14 @@ typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.9
 
 [package.extras]
 jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "toml"
@@ -425,7 +471,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "f8c1d3bd93f647c09ede25f16fb8e3019811c3c7626593450d6bbd479e4d86e8"
+content-hash = "cd00b2dd5460f127b63e8b151b947dce90edda5f8d3dd9989c975d9649225e01"
 
 [metadata.files]
 atomicwrites = []
@@ -444,6 +490,7 @@ more-itertools = []
 nodeenv = []
 numpy = []
 packaging = []
+pandas = []
 pillow = []
 platformdirs = []
 pluggy = [
@@ -459,9 +506,12 @@ pytest = [
     {file = "pytest-5.4.3-py3-none-any.whl", hash = "sha256:5c0db86b698e8f170ba4582a492248919255fcd4c79b1ee64ace34301fb589a1"},
     {file = "pytest-5.4.3.tar.gz", hash = "sha256:7979331bfcba207414f5e1263b5a0f8f521d0f457318836a7355531ed1a4c7d8"},
 ]
+python-dateutil = []
+pytz = []
 pyyaml = []
 requests = []
 rich = []
+six = []
 toml = []
 torch = []
 torchaudio = []

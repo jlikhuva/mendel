@@ -1,8 +1,11 @@
 {
     "cSpell.words": [
+        "dataframe",
+        "dtype",
         "logits",
         "Mnist",
         "pydantic",
         "typer"
-    ]
+    ],
+    "editor.formatOnSave": true
 }

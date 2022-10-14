@@ -1,16 +1,20 @@
-import typer
+import typing
+
 import pydantic
-from torch.utils.data import DataLoader
 import torch.nn as nn
+import typer
 from rich import print
+from torch.utils.data import DataLoader
+
 
 class DataLoaders(pydantic.BaseModel):
     """Class for keeping track of our data."""
+
     # The data to train on. Depending on the desired model, this can be the full
     # data, or a dataset with only a single class removed (sans-x)
     training: DataLoader
 
-    # The first dataset we evaluate on. This should have the 
+    # The first dataset we evaluate on. This should have the
     # same classes as the `training data`
     in_distribution_eval: DataLoader
 
@@ -25,16 +29,17 @@ class DataLoaders(pydantic.BaseModel):
 
 
 class TrainingMetrics(pydantic.BaseModel):
-    pass
+    training_loss: pydantic.conlist(item_type=float)
+    training_accuracy: pydantic.conlist(item_type=float)
 
 
 class Trainer:
-    def __init__(self,
-    model: nn.Module,
-        loss_fn = nn.CrossEntropyLoss,
+    def __init__(
+        self,
+        model: nn.Module,
+        loss_fn=nn.CrossEntropyLoss,
     ) -> None:
         pass
 
     def train(self) -> TrainingMetrics:
         pass
-
