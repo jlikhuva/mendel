@@ -1,45 +1,42 @@
-import typing
-
 import pydantic
+import rich
+import torch
 import torch.nn as nn
-import typer
-from rich import print
+import torch.optim as optim
+from rich.progress import track
 from torch.utils.data import DataLoader
 
 
-class DataLoaders(pydantic.BaseModel):
-    """Class for keeping track of our data."""
-
-    # The data to train on. Depending on the desired model, this can be the full
-    # data, or a dataset with only a single class removed (sans-x)
-    training: DataLoader
-
-    # The first dataset we evaluate on. This should have the
-    # same classes as the `training data`
-    in_distribution_eval: DataLoader
-
-    # The second dataset we evaluate on. If `training` is missing a class,
-    # then this is the dataset with all teh classes and vice versa
-    out_of_distribution_eval: DataLoader
-
-    # This is the final dataset we evaluate on. This dataset comprises
-    # of only a single class -- that which differentiates `in_distribution_eval`
-    # form `out_of_distribution_eval`
-    in_out_delta_eval: DataLoader
-
-
-class TrainingMetrics(pydantic.BaseModel):
+class Metrics(pydantic.BaseModel):
     training_loss: pydantic.conlist(item_type=float)
     training_accuracy: pydantic.conlist(item_type=float)
+    testing_loss: pydantic.conlist(item_type=float)
+    testing_accuracy: pydantic.conlist(item_type=float)
 
 
-class Trainer:
-    def __init__(
-        self,
-        model: nn.Module,
-        loss_fn=nn.CrossEntropyLoss,
-    ) -> None:
-        pass
+class Trainer(pydantic.BaseModel):
+    model: nn.Module
+    model_name: pydantic.constr(min_length=5)
+    data_loader: DataLoader
+    manual_seed: pydantic.conint(min=13)
+    loss_function = nn.CrossEntropyLoss
+    learning_rate: float = 1e-3
+    epochs: int = 15
 
-    def train(self) -> TrainingMetrics:
-        pass
+
+def run_train_loop():
+    pass
+
+
+def run_evaluation_loop():
+    pass
+
+
+def train(trainer: Trainer) -> Metrics:
+    generator: torch.Generator = torch.Generator()
+    generator.manual_seed(trainer.manual_seed)
+
+    for epoch_id in track(range(trainer.epochs), description="Training..."):
+        rich.print(f"Epoch {epoch_id+1}")
+        run_train_loop()
+        run_evaluation_loop()
