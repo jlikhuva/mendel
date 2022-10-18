@@ -4,6 +4,7 @@
         "dtype",
         "logits",
         "Mnist",
+        "Omniglot",
         "pydantic",
         "typer"
     ],

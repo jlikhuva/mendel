@@ -23,3 +23,9 @@ repos:
     hooks:
       - id: isort
         args: ["--profile", "black"]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.75
+    hooks:
+      - id: lint
+        args:
+          - "--fix"
