@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "argmax",
         "dataframe",
         "dtype",
+        "Interpretability",
         "logits",
         "Mnist",
         "Omniglot",
